@@ -2,8 +2,25 @@
 
 import { useState } from 'react';
 
+const cleanFileName = (fileName) => {
+  // Remove file extension
+  const nameWithoutExt = fileName.replace(/\.[^/.]+$/, '');
+
+  // Replace underscores, hyphens, and other symbols with spaces
+  let cleaned = nameWithoutExt.replace(/[_\-]+/g, ' ');
+
+  // Remove any other special characters except spaces (numbers removed here)
+  cleaned = cleaned.replace(/[^a-zA-Z\s]/g, '');
+
+  // Remove extra spaces and trim
+  cleaned = cleaned.replace(/\s+/g, ' ').trim();
+
+  return cleaned;
+};
+
 export const useImportFlow = () => {
   const [currentStep, setCurrentStep] = useState('upload');
+  const [previousStep, setPreviousStep] = useState(null);
   const [uploadedFile, setUploadedFile] = useState(null);
   const [pastedLink, setPastedLink] = useState('');
   const [selectedQuestionTypes, setSelectedQuestionTypes] = useState([]);
@@ -13,6 +30,7 @@ export const useImportFlow = () => {
   const [loadingProgress, setLoadingProgress] = useState(0);
 
   const nextStep = () => {
+    setPreviousStep(currentStep);
     switch (currentStep) {
       case 'upload':
         setCurrentStep('customize');
@@ -46,10 +64,10 @@ export const useImportFlow = () => {
   const handleFileUpload = (file) => {
     setUploadedFile(file);
     setPastedLink(''); // Clear link if file is uploaded
-    // Set deck name from file name if not already set
+    // Set deck name from cleaned file name if not already set
     if (!deckName && file?.name) {
-      const nameWithoutExtension = file.name.replace(/\.[^/.]+$/, "");
-      setDeckName(nameWithoutExtension);
+      const cleanedName = cleanFileName(file.name);
+      setDeckName(cleanedName);
     }
   };
 
@@ -85,6 +103,7 @@ export const useImportFlow = () => {
   return {
     // State
     currentStep,
+    previousStep,
     uploadedFile,
     pastedLink,
     selectedQuestionTypes,

@@ -1,48 +1,39 @@
 export default function LoadingScreen({ loadingProgress }) {
   return (
-    <div className="max-w-4xl mx-auto text-center">
+    <div className="max-w-4xl mx-auto">
       {/* Main heading */}
-      <div className="mb-8">
-        <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4 flex items-center justify-center gap-4">
+      <div className="text-center mb-8">
+        <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-6">
           Swimming through your files...
-          <div className="text-3xl">📄</div>
         </h1>
         <p className="text-gray-600 dark:text-gray-400 text-lg">
-          Analysing text and generating your deck..
+          Analysing text and generating your deck
         </p>
       </div>
 
-      {/* Progress bar */}
-      <div className="mb-12">
-        <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3 mb-4">
-          <div
-            className="bg-blue-400 h-3 rounded-full transition-all duration-300 ease-out"
-            style={{ width: `${loadingProgress}%` }}
-          />
-        </div>
-        <div className="text-right">
-          <span className="text-lg font-medium text-gray-900 dark:text-white">
+      {/* Content container with matching visual weight */}
+      <div className=" p-16 mb-8">
+        
+
+        {/* Progress bar */}
+        <div className="w-full mt-36 flex flex-col items-center">
+          <div className="w-full max-w-2xl bg-gray-200 dark:bg-gray-700 rounded-full h-3 mb-4">
+            <div
+              className="bg-[#4CA3CB] h-3 rounded-full transition-all duration-300 ease-out"
+              style={{ width: `${loadingProgress}%` }}
+            />
+          </div>
+          <span className="text-lg font-medium text-gray-600 dark:text-gray-300">
             {loadingProgress}%
           </span>
         </div>
-      </div>
-
-      {/* Koala animation placeholder */}
-      <div className="flex justify-center">
-        <div className="relative">
-          {/* Simple koala illustration placeholder */}
-          <div className="w-32 h-32 bg-gradient-to-br from-blue-100 to-blue-200 dark:from-blue-800 dark:to-blue-900 rounded-full flex items-center justify-center text-6xl animate-bounce">
-            🐨
-          </div>
-
-          {/* Water effect */}
-          <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2">
-            <div className="flex space-x-1">
-              <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
-              <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse delay-100"></div>
-              <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse delay-200"></div>
-            </div>
-          </div>
+        {/* Swimming Koala */}
+        <div className="flex justify-center mt-16">
+          <img
+            src="/koalaswimming.jpeg"
+            alt="Swimming Koala"
+            className="w-64 h-64 object-contain"
+          />
         </div>
       </div>
     </div>

@@ -306,13 +306,19 @@ export default function CustomizeScreen({
               onClick={() => toggleQuestionType(type.id)}
               className={`relative p-6 rounded-2xl border-2 cursor-pointer ${
                 isSelected
-                  ? 'border-[#4CA3CB]  shadow-[0_2px_0_0_#4CA3CB]'
-                  : 'border-gray-200 bg-white hover:border-gray-300 shadow-[0_2px_0_0_#D3D3D3]'
+                  ? 'border-[#4CA3CB]'
+                  : 'border-gray-200 bg-white hover:border-gray-300'
               }`}
-              whileTap={{ scale: 0.96 }}
-              // whileHover={{ scale: 1.01 }}
-              initial={{ scale: 1 }}
-              transition={{ type: "spring", stiffness: 550, damping: 25, duration: 0.1 }}
+              animate={{
+                y: isSelected ? 0 : 0,
+                boxShadow: isSelected ? '0 3px 0 0 #4CA3CB' : '0 3px 0 0 #D3D3D3'
+              }}
+              whileTap={{
+                y: 3,
+                boxShadow: '0 0px 0 0 #fff'
+              }}
+              initial={{ y: 0 }}
+              transition={{ type: "spring", stiffness: 550, damping: 30 }}
             >
               {/* Animated Checkmark */}
               <div className="absolute top-3 right-3">

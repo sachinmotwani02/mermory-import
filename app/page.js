@@ -19,9 +19,15 @@ export default function Home() {
 
   const pageTransition = {
     type: "spring",
-    stiffness: 600,
+    stiffness: 550,
     damping: 30,
   };
+
+  // Determine transition mode based on the transition happening
+  const transitionMode =
+    flowState.previousStep === 'customize' && flowState.currentStep === 'loading'
+      ? 'wait'
+      : 'popLayout';
 
   return (
     <div className="flex h-screen">
@@ -58,7 +64,7 @@ export default function Home() {
 
         {/* Content Area - starts after sidebar and below navbar */}
         <div className="pt-30 p-6">
-          <AnimatePresence mode="popLayout">
+          <AnimatePresence mode={transitionMode}>
             {flowState.currentStep === 'upload' && (
               <motion.div
                 key="upload"
