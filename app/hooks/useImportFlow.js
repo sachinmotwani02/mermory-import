@@ -28,8 +28,16 @@ export const useImportFlow = () => {
   const [deckName, setDeckName] = useState('');
   const [topicTag, setTopicTag] = useState('');
   const [loadingProgress, setLoadingProgress] = useState(0);
+  const [showProModal, setShowProModal] = useState(false);
 
   const nextStep = () => {
+    // Check if user exceeds pro limit when trying to generate deck
+    if (currentStep === 'customize' && numberOfCards > 50) {
+      setShowProModal(true);
+      setNumberOfCards(50);
+      return;
+    }
+
     setPreviousStep(currentStep);
     switch (currentStep) {
       case 'upload':
@@ -45,6 +53,29 @@ export const useImportFlow = () => {
       default:
         break;
     }
+  };
+
+  const handleUpgrade = () => {
+    setShowProModal(false);
+    // TODO: Navigate to upgrade/payment page
+    console.log('Upgrade to PRO');
+  };
+
+  const closeProModal = () => {
+    setShowProModal(false);
+  };
+
+  const goToUpload = () => {
+    setPreviousStep(currentStep);
+    setCurrentStep('upload');
+    // Reset form state
+    setUploadedFile(null);
+    setPastedLink('');
+    setSelectedQuestionTypes([]);
+    setNumberOfCards(20);
+    setDeckName('');
+    setTopicTag('');
+    setLoadingProgress(0);
   };
 
   const simulateLoading = () => {
@@ -111,6 +142,7 @@ export const useImportFlow = () => {
     deckName,
     topicTag,
     loadingProgress,
+    showProModal,
 
     // Actions
     nextStep,
@@ -121,6 +153,9 @@ export const useImportFlow = () => {
     setNumberOfCards,
     setDeckName,
     setTopicTag,
+    handleUpgrade,
+    closeProModal,
+    goToUpload,
 
     // Validation
     canProceedFromUpload,

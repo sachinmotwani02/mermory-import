@@ -7,8 +7,8 @@ const figtree = Figtree({
 });
 
 export const metadata = {
-  title: "Memory Import",
-  description: "Memory Import Application",
+  title: "Mermory Import",
+  description: "Merrmory Import Flow",
 };
 
 export default function RootLayout({ children }) {

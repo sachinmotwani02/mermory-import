@@ -184,7 +184,8 @@ export default function UploadScreen({
             placeholder="or paste any link here"
             value={pastedLink}
             onChange={(e) => handleLinkPaste(e.target.value)}
-            className="flex-1 bg-transparent text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 resize-none text-lg focus:outline-none"
+            disabled={uploadedFile}
+            className="flex-1 bg-transparent text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 resize-none text-xl focus:outline-none"
             rows={1}
           />
           <div className="flex items-center gap-3 ml-4">

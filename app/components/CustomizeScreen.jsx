@@ -1,5 +1,6 @@
 import CustomSlider from './CustomSlider';
 import AnimatedCheckbox from './AnimatedCheckbox';
+import ProLimitModal from './ProLimitModal';
 import { motion } from 'framer-motion';
 import { useState, useRef, useEffect } from 'react';
 
@@ -14,7 +15,10 @@ export default function CustomizeScreen({
   topicTag,
   setTopicTag,
   canProceedFromCustomize,
-  nextStep
+  nextStep,
+  showProModal,
+  handleUpgrade,
+  closeProModal
 }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
@@ -423,6 +427,13 @@ export default function CustomizeScreen({
           Generate Deck →
         </button>
       </div>
+
+      {/* Pro Limit Modal */}
+      <ProLimitModal
+        isOpen={showProModal}
+        onClose={closeProModal}
+        onUpgrade={handleUpgrade}
+      />
     </div>
   );
 }

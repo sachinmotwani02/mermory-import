@@ -27,7 +27,7 @@ const cards = [
   },
 ];
 
-export default function ReadyScreen() {
+export default function ReadyScreen({ goToUpload }) {
   return (
     <div className="max-w-4xl mx-auto">
       {/* Main heading */}
@@ -106,9 +106,12 @@ export default function ReadyScreen() {
       </div>
 
       {/* Back button */}
-      <div className="text-center">
-        <button className="text-blue-400 hover:text-blue-500 font-medium text-lg transition-colors duration-200">
-          ← Back to Dashboard
+      <div className="text-center mt-20">
+        <button
+          onClick={goToUpload}
+          className="text-blue-400 hover:text-blue-500 font-medium text-lg transition-colors duration-200"
+        >
+          ← Back to Import
         </button>
       </div>
     </div>
