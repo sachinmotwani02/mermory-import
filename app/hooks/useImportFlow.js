@@ -48,7 +48,7 @@ export const useImportFlow = () => {
         // Delay simulateLoading to allow transition to complete
         setTimeout(() => {
           simulateLoading();
-        }, 300);
+        }, 1000);
         break;
       case 'loading':
         setCurrentStep('ready');
