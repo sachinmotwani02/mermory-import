@@ -1,3 +1,5 @@
+"use client";
+
 import CustomSlider from './CustomSlider';
 import AnimatedCheckbox from './AnimatedCheckbox';
 import ProLimitModal from './ProLimitModal';

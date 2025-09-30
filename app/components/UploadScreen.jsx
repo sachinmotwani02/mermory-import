@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import { FileText, Music, Video, ImageIcon, Link } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";

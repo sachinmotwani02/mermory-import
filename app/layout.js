@@ -14,7 +14,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${figtree.className} antialiased`}>
+      <body className={`${figtree.className} antialiased`} suppressHydrationWarning>
         {children}
       </body>
     </html>

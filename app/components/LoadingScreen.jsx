@@ -1,3 +1,5 @@
+"use client";
+
 export default function LoadingScreen({ loadingProgress }) {
   return (
     <div className="max-w-4xl mx-auto">
@@ -13,7 +15,7 @@ export default function LoadingScreen({ loadingProgress }) {
 
       {/* Content container with matching visual weight */}
       <div className=" p-16 mb-8">
-        
+
 
         {/* Progress bar */}
         <div className="w-full mt-36 flex flex-col items-center">

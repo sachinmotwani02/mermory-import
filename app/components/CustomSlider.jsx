@@ -1,3 +1,5 @@
+"use client";
+
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function CustomSlider({ value, onChange, min = 0, max = 100, freeLimit = 50 }) {
