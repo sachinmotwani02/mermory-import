@@ -51,7 +51,7 @@ export default function UploadScreen({
             borderColor: isDragging ? "#60a5fa" : "rgb(147, 197, 253)",
             backgroundColor: isDragging ? "#d4e9f3" : "#E5F2F8"
           }}
-          transition={{ duration: 0.2, delay: uploadedFile ? 1 : 0 }}
+          transition={{ duration: 0.1, delay: uploadedFile ? 1 : 0 }}
           className="border-2 border-dashed rounded-3xl px-16 pt-16 pb-10 text-center dark:bg-gray-800/30"
           onDragOver={(e) => {
             e.preventDefault();
