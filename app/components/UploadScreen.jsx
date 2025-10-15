@@ -14,6 +14,7 @@ export default function UploadScreen({
   nextStep
 }) {
   const [showSuccess, setShowSuccess] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
 
   useEffect(() => {
     if (uploadedFile) {
@@ -46,20 +47,23 @@ export default function UploadScreen({
         <motion.div
           animate={{
             filter: uploadedFile ? "blur(6px)" : "blur(0px)",
-            opacity: uploadedFile ? 0.5 : 1
+            opacity: uploadedFile ? 0.5 : 1,
+            borderColor: isDragging ? "#60a5fa" : "rgb(147, 197, 253)",
+            backgroundColor: isDragging ? "#d4e9f3" : "#E5F2F8"
           }}
-          transition={{ duration: 0.25, delay: uploadedFile ? 1 : 0 }}
-          className="border-2 border-dashed border-blue-300 dark:border-gray-600 rounded-3xl px-16 pt-16 pb-10 text-center bg-[#E5F2F8] dark:bg-gray-800/30"
+          transition={{ duration: 0.2, delay: uploadedFile ? 1 : 0 }}
+          className="border-2 border-dashed rounded-3xl px-16 pt-16 pb-10 text-center dark:bg-gray-800/30"
           onDragOver={(e) => {
             e.preventDefault();
-            e.currentTarget.classList.add('border-blue-400', 'bg-blue-50');
+            setIsDragging(true);
           }}
           onDragLeave={(e) => {
-            e.currentTarget.classList.remove('border-blue-400', 'bg-blue-50');
+            e.preventDefault();
+            setIsDragging(false);
           }}
           onDrop={(e) => {
             e.preventDefault();
-            e.currentTarget.classList.remove('border-blue-400', 'bg-blue-50');
+            setIsDragging(false);
             const files = Array.from(e.dataTransfer.files);
             if (files.length > 0) {
               handleFileUpload(files[0]);
