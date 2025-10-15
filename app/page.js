@@ -23,11 +23,8 @@ export default function Home() {
     damping: 30,
   };
 
-  // Determine transition mode based on the transition happening
-  const transitionMode =
-    flowState.previousStep === 'customize' && flowState.currentStep === 'loading'
-      ? 'wait'
-      : 'popLayout';
+  // Use popLayout mode for all transitions
+  const transitionMode = 'popLayout';
 
   return (
     <div className="flex h-screen">
